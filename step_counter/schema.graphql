@@ -1,0 +1,19 @@
+type Query {
+    listAllSteps: [Step]
+}
+
+type Mutation {
+    createSteps(input: StepInput): Step
+}
+
+type Step {
+    name: String
+    date: String
+    steps: Int
+}
+
+input StepInput {
+    name: String
+    date: String
+    steps: Int
+}

@@ -1,0 +1,35 @@
+from datetime import datetime
+
+from step_counter.model.models import StepCounter, StepCounterSchema
+from step_counter.exceptions.bad_request import BadRequestError
+
+class StepCounterService:
+
+    def __init__(self) -> None:
+        self.step_schema = StepCounterSchema()
+
+    def get_steps(self):
+        steps = self._get_all()
+        self.sort_data_by_date(steps)
+        return steps
+
+    def save_steps(self, step):
+        if not isinstance(step, dict):
+            raise BadRequestError("Bad request")    
+        
+        step = StepCounter(step)
+        step.save()
+
+        return self.step_schema.dump(step)
+
+    def sort_data_by_date(self, data):
+        data.sort(key=lambda step: (datetime.strptime(step['date'], '%d-%m-%Y'), step['name']))
+
+    def _get_all(self):
+        steps =  StepCounter.get_all()
+        return [self.step_schema.dump(step) for step in steps]
+
+    def validate_input(self, step: dict):
+        assert step.get('name') is not None, 'Name must be set'
+        assert step.get('date') is not None, 'Date must be set'
+        assert step.get('steps') is not None, 'Steps must be set'
