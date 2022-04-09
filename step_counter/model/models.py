@@ -33,7 +33,7 @@ class StepCounter(db.Model):
             raise BadRequestError('Name and date combination already exists. Forbidden..') from e
 
     @classmethod
-    def get_user_by_name(cls, name) -> list['StepCounter']:
+    def get_user_by_name(cls, name):
         return cls.query.filter(cls.name == name)
 
     @classmethod    

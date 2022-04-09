@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from step_counter.model.models import StepCounter, StepCounterSchema
-from step_counter.exceptions.bad_request import BadRequestError
 
 class StepCounterService:
 
