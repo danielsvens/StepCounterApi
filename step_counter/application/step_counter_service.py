@@ -14,9 +14,6 @@ class StepCounterService:
         return steps
 
     def save_steps(self, step):
-        if not isinstance(step, dict):
-            raise BadRequestError("Bad request")    
-        
         step = StepCounter(step)
         step.save()
 
