@@ -1,6 +1,6 @@
 import socket
 
-from threading import Thread
+# from threading import Thread
 from edMQ_client import edm_queue
 from edMQ_client.exception.exception import InvalidValueError
 from edMQ_client.messaging.message import Message

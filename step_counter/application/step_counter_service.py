@@ -1,4 +1,5 @@
 from datetime import datetime
+from step_counter.edMQ_client.event import EdMQEvent
 
 from step_counter.model.models import StepCounter, StepCounterSchema
 
@@ -16,7 +17,14 @@ class StepCounterService:
         step = StepCounter(step)
         step.save()
 
-        return self.step_schema.dump(step)
+        steps = self.step_schema.dump(step)
+        self.publish(steps)
+        
+        return steps
+
+    @EdMQEvent(exchange='e.default', routing_key='testKey')
+    def publish(self):
+        pass
 
     def sort_data_by_date(self, data):
         data.sort(key=lambda step: (datetime.strptime(step['date'], '%d-%m-%Y'), step['name']))
