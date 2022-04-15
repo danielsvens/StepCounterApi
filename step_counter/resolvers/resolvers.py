@@ -1,5 +1,4 @@
 from ariadne import QueryType, MutationType
-from datetime import datetime
 from step_counter.application.step_counter_service import StepCounterService
 
 query = QueryType()

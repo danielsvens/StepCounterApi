@@ -1,13 +1,13 @@
 from datetime import datetime
 from step_counter.edMQ_client.event import EdMQEvent
-from step_counter.edMQ_client import edm_queue
+from step_counter import app
 
 from step_counter.model.models import StepCounter, StepCounterSchema
 
 class StepCounterService:
 
     def __init__(self) -> None:
-        self.step_schema = StepCounterSchema()
+        self.step_schema = StepCounterSchema()        
 
     def get_steps(self):
         steps = self._get_all()
@@ -19,7 +19,9 @@ class StepCounterService:
         step.save()
 
         steps = self.step_schema.dump(step)
-        self.publish(steps)
+
+        if app.config.get('EDMQ_ENABLED', False):
+            self.publish(steps)
 
         return steps
 
@@ -32,8 +34,6 @@ class StepCounterService:
 
     def _get_all(self):
         steps =  StepCounter.get_all()
-        curr_q = edm_queue
-        print(list(curr_q.get()))
         return [self.step_schema.dump(step) for step in steps]
 
     def validate_input(self, step: dict):
