@@ -15,6 +15,9 @@ class Settings:
     USE_RELOADER = False
     ENV = 'production'
     PORT = 8082
+    SECRET = 'Super le secret '
 
+    ## EDMQ CONFIG
+    EDMQ_URL = 'edmq://guest:guest@edmq-service:9999'
 
 settings = Settings()
