@@ -32,7 +32,8 @@ class StepCounterService:
 
     def _get_all(self):
         steps =  StepCounter.get_all()
-        print(list(edm_queue))
+        curr_q = edm_queue
+        print(list(curr_q.get()))
         return [self.step_schema.dump(step) for step in steps]
 
     def validate_input(self, step: dict):

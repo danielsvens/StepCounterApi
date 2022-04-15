@@ -28,8 +28,7 @@ schema = make_executable_schema(
 
 with app.app_context():
     producer = ProducerClient(app.config, log)
-
-producer.start()
+    producer.start()
 
 from step_counter.api import routes
 
