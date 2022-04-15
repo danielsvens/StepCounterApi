@@ -26,9 +26,10 @@ schema = make_executable_schema(
     type_defs, query, mutation, snake_case_fallback_resolvers
 )
 
-with app.app_context():
-    producer = ProducerClient(app.config, log)
-    producer.start()
+if app.config['EDMQ_ENABLED']:
+    with app.app_context():
+        producer = ProducerClient(app.config, log)
+        producer.start()
 
 from step_counter.api import routes
 

@@ -16,6 +16,7 @@ class Settings:
     ENV = 'production'
     PORT = 8082
     SERVER_KEY = 'Super le secret '
+    EDMQ_ENABLED = os.environ.get("EDMQ_ENABLED", False)
 
     ## EDMQ CONFIG
     EDMQ_URL = os.environ.get('EDMQ_URL', 'edmq://guest:guest@192.168.1.4:32021')
