@@ -1,5 +1,6 @@
 from datetime import datetime
 from step_counter.edMQ_client.event import EdMQEvent
+from step_counter.edMQ_client import edm_queue
 
 from step_counter.model.models import StepCounter, StepCounterSchema
 
@@ -31,6 +32,7 @@ class StepCounterService:
 
     def _get_all(self):
         steps =  StepCounter.get_all()
+        print(edm_queue)
         return [self.step_schema.dump(step) for step in steps]
 
     def validate_input(self, step: dict):
