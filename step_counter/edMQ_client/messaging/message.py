@@ -1,4 +1,4 @@
-from edMQ_client.messaging.message_builder import MessageBuilder
+from step_counter.edMQ_client.messaging.message_builder import MessageBuilder
 
 
 class Message:
