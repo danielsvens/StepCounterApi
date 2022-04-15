@@ -1,4 +1,4 @@
-from edMQ_client import edm_queue
+from step_counter.edMQ_client import edm_queue
 
 
 class EdMQEvent:
