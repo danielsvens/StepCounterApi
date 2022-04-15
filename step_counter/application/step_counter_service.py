@@ -19,12 +19,12 @@ class StepCounterService:
 
         steps = self.step_schema.dump(step)
         self.publish(steps)
-        
+
         return steps
 
     @EdMQEvent(exchange='e.default', routing_key='testKey')
-    def publish(self):
-        pass
+    def publish(self, data):
+        return data
 
     def sort_data_by_date(self, data):
         data.sort(key=lambda step: (datetime.strptime(step['date'], '%d-%m-%Y'), step['name']))

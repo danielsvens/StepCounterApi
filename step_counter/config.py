@@ -18,6 +18,6 @@ class Settings:
     SECRET = 'Super le secret '
 
     ## EDMQ CONFIG
-    EDMQ_URL = 'edmq://guest:guest@edmq-service:9999'
+    EDMQ_URL = 'edmq://guest:guest@192.168.1.4:32021'
 
 settings = Settings()

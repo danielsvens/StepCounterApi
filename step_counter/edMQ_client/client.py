@@ -20,7 +20,7 @@ class ProducerClient(AppContextThread):
     }
 
     def __init__(self, url, secret):
-        self.cipher = Cipher(secret)  # This should be updated to env variable
+        self.cipher = Cipher('Super le secret ')  # This should be updated to env variable
         self.disconnected = False
         self.url = url
         self.retry_attempts = 0
