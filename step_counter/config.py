@@ -15,7 +15,7 @@ class Settings:
     USE_RELOADER = False
     ENV = 'production'
     PORT = 8082
-    SECRET = 'Super le secret '
+    SERVER_KEY = 'Super le secret '
 
     ## EDMQ CONFIG
     EDMQ_URL = os.environ.get('EDMQ_URL', 'edmq://guest:guest@192.168.1.4:32021')

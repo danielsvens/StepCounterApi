@@ -27,7 +27,7 @@ schema = make_executable_schema(
 )
 
 with app.app_context():
-    producer = ProducerClient(app.config['EDMQ_URL'], app.config['SECRET'])
+    producer = ProducerClient(app.config, log)
 
 producer.start()
 
