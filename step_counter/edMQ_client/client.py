@@ -1,11 +1,11 @@
 import socket
 
 # from threading import Thread
-from edMQ_client import edm_queue
-from edMQ_client.exception.exception import InvalidValueError
-from edMQ_client.messaging.message import Message
-from edMQ_client.messaging.message_builder import AuthRequestBuilder
-from edMQ_client.messaging.encryption import Cipher
+from step_counter.edMQ_client import edm_queue
+from step_counter.edMQ_client.exception.exception import InvalidValueError
+from step_counter.edMQ_client.messaging.message import Message
+from step_counter.edMQ_client.messaging.message_builder import AuthRequestBuilder
+from step_counter.edMQ_client.messaging.encryption import Cipher
 from flaskthreads import AppContextThread
 
 
