@@ -26,7 +26,7 @@ schema = make_executable_schema(
     type_defs, query, mutation, snake_case_fallback_resolvers
 )
 
-if app.config['EDMQ_ENABLED']:
+if app.config.get('EDMQ_ENABLED', False) == 'true':
     with app.app_context():
         producer = ProducerClient(app.config, log)
         producer.start()

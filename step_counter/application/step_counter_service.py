@@ -20,7 +20,7 @@ class StepCounterService:
 
         steps = self.step_schema.dump(step)
 
-        if app.config.get('EDMQ_ENABLED', False):
+        if app.config.get('EDMQ_ENABLED', False) == 'true':
             self.publish(steps)
 
         return steps
